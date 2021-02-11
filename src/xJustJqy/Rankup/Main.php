@@ -123,13 +123,15 @@ class Main extends PluginBase implements Listener {
         if($cmd->getName() === "mines") {
             $list = "";
             if($sender->hasPermission("rankup.command.admin")) {
-                $version = (json_decode(file_get_contents($this->getDataFolder() . "updater.json")))->version;
-                $repoVersion = (json_decode(file_get_contents("https://github.com/xJustJqy/Rankup-MineWarps/raw/main/updater.json")))->version;
-                if($version !== $repoVersion) {
-                    $list .= self::ERROR . "This plugin is not up to date! Please download the lates version at https://github.com/xJustJqy/Rankup-MineWarps/releases/tag/".$repoVersion."\n";
-                }else{
-                    $list .= self::SUCCESS . "This plugin is up to date!\n";
-                }
+                try {
+                    $version = (json_decode(file_get_contents($this->getDataFolder() . "updater.json")))->version;
+                    $repoVersion = (json_decode(file_get_contents("https://github.com/xJustJqy/Rankup-MineWarps/raw/main/updater.json")))->version;
+                    if($version !== $repoVersion) {
+                        $list .= self::ERROR . "This plugin is not up to date! Please download the lates version at https://github.com/xJustJqy/Rankup-MineWarps/releases/tag/".$repoVersion."\n";
+                    }else{
+                        $list .= self::SUCCESS . "This plugin is up to date!\n";
+                    }
+                } catch($err) {}
             }
             $list .= self::INFO . "Mine Warps:\n";
             foreach(array_keys($this->mines->getAll()) as $mine) {
@@ -180,7 +182,7 @@ class Main extends PluginBase implements Listener {
                         }
                         $this->cmdReturn = true;
                     }
-                } catch (PluginException $e) {
+                } catch ($e) {
                     $sender->sendMessage(self::ERROR."That mine does not exist!");
                     $this->cmdReturn = true;
                 }
