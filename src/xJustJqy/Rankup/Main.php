@@ -127,7 +127,7 @@ class Main extends PluginBase implements Listener {
         if($cmd->getName() === "mines") {
             $list = "";
             if($sender->hasPermission("rankup.command.admin")) {
-                $version = (new Config($this->getServer()->getDataFolder() . "config.yml", Config::YAML, []))->get("version");
+                $version = (new Config($this->getDataFolder() . "config.yml", Config::YAML, []))->get("version");
                 $repoVersion = (json_decode(file_get_contents("https://github.com/xJustJqy/Rankup-MineWarps/raw/main/resources/config.yml")))->version;
                 if($version !== $repoVersion) {
                     $list .= self::ERROR . "This plugin is not up to date! Please download the lates version at https://github.com/xJustJqy/Rankup-MineWarps/releases/tag/".$repoVersion."\n";
