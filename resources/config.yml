@@ -25,6 +25,9 @@
 # # Current variables: {level} {nextlevel} {money} {nextlevelcost} | You can use "&" for colors
 # format: "&e{money} &f| &6{level} &f-> &6{nextlevel} &e{nextlevelcost}"
 
+# DO NOT CHANGE THIS
+version: 0.0.1
+
 # Currently available: alphabetic, numerical
 rankup-style: alphabetic
 # Maximum ranks (with alphabetic style this does nothing)
