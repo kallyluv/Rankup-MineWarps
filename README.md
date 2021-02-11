@@ -1,5 +1,4 @@
 # Rankup-MineWarps
-### By xJustJqy
 
 Contact info:
 - Discord: Sir E of Cali#0001
@@ -17,3 +16,5 @@ Commands restricted (rankup.command.admin)
 - createminewarp
 - deleteminewarp
 ```
+
+Developed by xJustJqy.
