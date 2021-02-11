@@ -1,0 +1,47 @@
+---
+name: Rankup
+version: 0.0.1
+main: xJustJqy\Rankup\Main
+api: 3.17.4
+
+commands:
+  rankup:
+    aliases: ["ru"]
+    usage: "/rankup"
+    description: "Rankup to the next level"
+    permissions: rankup.command.default
+  rankupmax:
+    aliases: ["rum"]
+    usage: "/rankupmax"
+    description: "Rankup to the highest level possible"
+    permissions: rankup.command.default
+  admin:
+    aliases: ["sl"]
+    usage: "/setmine <player> <level>"
+    description: "Set a player's level"
+    permissions: rankup.command.admin
+  createminewarp:
+    aliases: ["createmw", "cmw"]
+    usage: "/createminewarp <name>"
+    description: "Create a new minewarp"
+    permissions: rankup.command.admin
+  deleteminewarp:
+    aliases: ["deletemw", "dmw"]
+    usage: "/deleteminewarp <name>"
+    description: "Delete a minewarp"
+    permissions: rankup.command.admin
+  mine:
+    usage: "/mine [name]"
+    description: "Teleport to a mine!"
+    permissions: rankup.command.default
+  mines:
+    usage: "/mines"
+    description: "Gives a list of mines"
+    permissions: rankup.command.default
+
+permissions:
+  rankup.command.default:
+    default: true
+  rankup.command.admin:
+    default: op
+...
