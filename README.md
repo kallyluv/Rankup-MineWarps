@@ -1,5 +1,6 @@
 # Rankup-MineWarps
-By xJustJqy
+### By xJustJqy
+
 Contact info:
 - Discord: Sir E of Cali#0001
 
