@@ -128,7 +128,12 @@ class Main extends PluginBase implements Listener {
             $list = "";
             if($sender->hasPermission("rankup.command.admin")) {
                 $version = (new Config($this->getServer()->getDataPath() . "plugins/Rankup/plugin.yml", Config::YAML, []))->get("version");
-                $repoVersion = file_get_contents("");
+                $repoVersion = (json_decode(file_get_contents("https://github.com/xJustJqy/Rankup-MineWarps/raw/main/plugin.yml")))->version;
+                if($version !== $repoVersion) {
+                    $list .= self::ERROR . "This plugin is not up to date! Please download the lates version at https://github.com/xJustJqy/Rankup-MineWarps/releases/tag/".$repoVersion."\n";
+                }else{
+                    $list .= self::SUCCESS . "This plugin is up to date!\n";
+                }
             }
             $list .= self::INFO . "Mine Warps:\n";
             foreach(array_keys($this->mines->getAll()) as $mine) {
