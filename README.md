@@ -17,4 +17,4 @@ Commands restricted (rankup.command.admin)
 - deleteminewarp
 ```
 
-Developed by xJustJqy.
+Developed by xJustJqy
