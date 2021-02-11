@@ -1,0 +1,52 @@
+#                ## DEFAULT ##                #
+# # Currently available: alphabetic, numerical
+# rankup-style: alphabetic
+# # Maximum ranks (with alphabetic style this does nothing)
+# max-rank: 100
+# 
+# # how much it costs to rank up from level 1
+# first-rankup-cost: 2500
+# # how the rankup cost grows. Currently available: linear, exponential
+# cost-multiplier-style: linear
+# 
+# # Multiplier per rankup. For example, with value 1.5:
+# #   to => level 2: 2500, 
+# #   to => level 3: 3750
+# #   to => level 4: 5000
+# rankup-multiplier: 1.5
+# 
+# # give players with certain ranks special permissions
+# permissions:
+#   100: fly.command.use
+#
+# # Economy plugin used. This is case sensitive
+# economy: EconomyAPI
+#
+# # Current variables: {level} {nextlevel} {money} {nextlevelcost} | You can use "&" for colors
+# format: "&e{money} &f| &6{level} &f-> &6{nextlevel} &e{nextlevelcost}"
+
+# Currently available: alphabetic, numerical
+rankup-style: alphabetic
+# Maximum ranks (with alphabetic style this does nothing)
+max-rank: 100
+
+# how much it costs to rank up from level 1
+first-rankup-cost: 2500
+# how the rankup cost grows. Currently available: linear, exponential
+cost-multiplier-style: linear
+
+# Multiplier per rankup. For example, with value 1.5:
+#   to => level 2: 2500, 
+#   to => level 3: 3750
+#   to => level 4: 5000
+rankup-multiplier: 1.5
+
+# give players with certain ranks special permissions
+permissions:
+  100: fly.command.use
+
+# Economy plugin used. This is case sensitive
+economy: EconomyAPI
+
+# Current variables: {level} {nextlevel} {money} {nextlevelcost} | You can use "&" for colors
+format: "&e{money} &f| &6{level} &f-> &6{nextlevel} &e{nextlevelcost}"
