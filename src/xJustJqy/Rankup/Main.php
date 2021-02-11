@@ -131,7 +131,7 @@ class Main extends PluginBase implements Listener {
                     }else{
                         $list .= self::SUCCESS . "This plugin is up to date!\n";
                     }
-                } catch($err) {}
+                } catch(Exception $err) {}
             }
             $list .= self::INFO . "Mine Warps:\n";
             foreach(array_keys($this->mines->getAll()) as $mine) {
@@ -182,7 +182,7 @@ class Main extends PluginBase implements Listener {
                         }
                         $this->cmdReturn = true;
                     }
-                } catch ($e) {
+                } catch (Exception $e) {
                     $sender->sendMessage(self::ERROR."That mine does not exist!");
                     $this->cmdReturn = true;
                 }
