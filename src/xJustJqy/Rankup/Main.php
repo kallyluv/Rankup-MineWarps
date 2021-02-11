@@ -47,18 +47,10 @@ class Main extends PluginBase implements Listener {
         $this->players = new Config($this->getDataFolder() . "players.yml", Config::YAML, []);
         $this->mines = new Config($this->getDataFolder() . "mines.yml", Config::YAML, []);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function () : void {
-            $this->economy = $this->getServer()->getPluginManager()->getPlugin($this->config->get("economy"));
-            if(is_null($this->economy) || $this->economy->isDisabled()) {
-                $this->logger->info(self::ERROR . "No economy plugin was found!");
-                $this->disable();
-            }else{
-                $this->initializeMines();
-                if($this->config->get("economy") === "EconomyAPI") {
-                    new MoneyChangeListener($this);
-                }
-            }
-        }), 5000);
+        $plugin = $this;
+        $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function () use ($plugin) : void {
+            $plugin->initEconomy();
+        }), 50);
     }
 
     private function disable() {
@@ -366,5 +358,18 @@ class Main extends PluginBase implements Listener {
     private function createWarp(string $name, $position, $levelName) {
         $this->mines->set($name, [$position->x, $position->y, $position->z, $levelName]);
         $this->mines->save();
+    }
+
+    public function initEconomy() {
+        $this->economy = $this->getServer()->getPluginManager()->getPlugin($this->config->get("economy"));
+            if(is_null($this->economy) || $this->economy->isDisabled()) {
+                $this->logger->info(self::ERROR . "No economy plugin was found!");
+                $this->disable();
+            }else{
+                $this->initializeMines();
+                if($this->config->get("economy") === "EconomyAPI") {
+                    new MoneyChangeListener($this);
+                }
+            }
     }
 }
