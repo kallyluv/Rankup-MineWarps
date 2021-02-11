@@ -243,7 +243,7 @@ class Main extends PluginBase implements Listener {
             $rankUp = "";
         }
         $title = str_replace(["{level}", "{nextlevel}", "{money}", "{nextlevelcost}", "&"], [$this->players->getNested($player->getXuid() . ".minerank"), isset($nextmine) ? $nextmine : "MAX", $this->convertToShort($this->economy->myMoney($player)), isset($nextmine) ? $this->convertToShort($next) : "", TF::ESCAPE], $this->config->get("format"));
-        $this->bars[strtolower($player->getName())]->setTitle($title)->setPercentage(($this->economy->myMoney($player) / $next > 0) ? $this->economy->myMoney($player) / $next : 1 / 100)->addPlayer($player);
+        $this->bars[strtolower($player->getName())]->setTitle($title)->setPercentage((floatval($this->economy->myMoney($player)) / floatval($next) > 0) ? floatval(floatval($this->economy->myMoney($player)) / floatval($next)) : floatval(1) / floatval(100))->addPlayer($player);
     }
 
     public function handleRankup(Player $player) {
