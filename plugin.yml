@@ -1,6 +1,6 @@
 ---
 name: Rankup
-version: 0.0.1
+version: 0.1.0
 main: xJustJqy\Rankup\Main
 api: 3.17.4
 load: POSTWORLD
