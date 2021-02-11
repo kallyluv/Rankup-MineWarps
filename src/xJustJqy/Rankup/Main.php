@@ -127,7 +127,8 @@ class Main extends PluginBase implements Listener {
         if($cmd->getName() === "mines") {
             $list = "";
             if($sender->hasPermission("rankup.command.admin")) {
-                
+                $version = (new Config($this->getServer()->getDataPath() . "plugins/Rankup/plugin.yml", Config::YAML, []))->get("version");
+                $repoVersion = file_get_contents("");
             }
             $list .= self::INFO . "Mine Warps:\n";
             foreach(array_keys($this->mines->getAll()) as $mine) {
