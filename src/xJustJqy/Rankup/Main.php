@@ -42,19 +42,23 @@ class Main extends PluginBase implements Listener {
         $this->saveResource("players.yml");
         $this->saveResource("config.yml");
         $this->saveResource("mines.yml");
+        $this->saveResource("updater.json");
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, []);
         $this->players = new Config($this->getDataFolder() . "players.yml", Config::YAML, []);
         $this->mines = new Config($this->getDataFolder() . "mines.yml", Config::YAML, []);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->economy = $this->getServer()->getPluginManager()->getPlugin($this->config->get("economy"));
-        if(is_null($this->economy) || $this->economy->isDisabled()) {
-            $this->logger->info(self::ERROR . "No economy plugin was found!");
-            $this->disable();
-        }
-        $this->initializeMines();
-        if($this->config->get("economy") === "EconomyAPI") {
-            new MoneyChangeListener($this);
-        }
+        $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function () : void {
+            $this->economy = $this->getServer()->getPluginManager()->getPlugin($this->config->get("economy"));
+            if(is_null($this->economy) || $this->economy->isDisabled()) {
+                $this->logger->info(self::ERROR . "No economy plugin was found!");
+                $this->disable();
+            }else{
+                $this->initializeMines();
+                if($this->config->get("economy") === "EconomyAPI") {
+                    new MoneyChangeListener($this);
+                }
+            }
+        }), 5000);
     }
 
     private function disable() {
@@ -127,7 +131,7 @@ class Main extends PluginBase implements Listener {
         if($cmd->getName() === "mines") {
             $list = "";
             if($sender->hasPermission("rankup.command.admin")) {
-                $version = strval((new Config($this->getDataFolder() . "config.yml", Config::YAML, []))->get("version"));
+                $version = (json_decode(file_get_contents($this->getDataFolder() . "updater.json")))->version;
                 $repoVersion = (json_decode(file_get_contents("https://github.com/xJustJqy/Rankup-MineWarps/raw/main/updater.json")))->version;
                 if($version !== $repoVersion) {
                     $list .= self::ERROR . "This plugin is not up to date! Please download the lates version at https://github.com/xJustJqy/Rankup-MineWarps/releases/tag/".$repoVersion."\n";
