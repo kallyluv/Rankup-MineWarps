@@ -135,7 +135,7 @@ class Main extends PluginBase implements Listener {
                     if(!is_null($this->mines->get( strtolower( strval( $args[0] ) ) ) ) ) {
                         $canGo = false;
                         if($this->config->get("rankup-style") === "numerical") {
-                            if(floatval($args[0]) < floatval($this->players->getNested($sender->getXuid() . ".minerank"))) {
+                            if(floatval($args[0]) <= floatval($this->players->getNested($sender->getXuid() . ".minerank"))) {
                                 $canGo = true;   
                             }
                         }else{
