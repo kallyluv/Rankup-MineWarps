@@ -39,6 +39,10 @@ commands:
     usage: "/mines"
     description: "Gives a list of mines"
     permissions: rankup.command.default
+  setlevel:
+    usage: "/setlevel <player> <level>"
+    description: "Set a player's level"
+    permissions: rankup.command.admin
 
 permissions:
   rankup.command.default:
