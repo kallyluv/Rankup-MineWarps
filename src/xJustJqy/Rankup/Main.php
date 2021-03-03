@@ -326,6 +326,11 @@ class Main extends PluginBase implements Listener {
         $coststyle = (string) $this->config->get("cost-multiplier-style");
         $basecost = (int) $this->config->get("first-rankup-cost");
         $previous = $basecost;
+        if(!is_numeric($this->config->get("max-rank")) || !is_string($this->config->get("rankup-style")) || !is_numeric($this->config->get("rankup-multiplier")) || !is_string($this->config->get("cost-multiplier-style")) || !is_numeric($this->config->get("first-rankup-cost"))){
+          $this->log(self::ERROR."Config is incorrectly setup!");
+          $this->disable();
+          return;
+        }
         if($style === "numerical") {
             for($i = 1; $i <= $max; $i++) {
                 if($coststyle === "linear") {
