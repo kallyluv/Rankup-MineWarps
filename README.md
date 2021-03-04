@@ -1,10 +1,7 @@
 # Rankup-MineWarps
-
-Contact info:
-- Discord: Sir E of Cali#0001
-
-# About
 Rankup-MineWarps is a simple prisons plugins that allows staff to easily manage rankups and minewarps.
+
+# Commands & Permissions
 ```
 Commands available to all (rankup.command.default)
 - rankup
@@ -17,4 +14,5 @@ Commands restricted (rankup.command.admin)
 - deleteminewarp
 ```
 
-Developed by xJustJqy
+# Bugs/Issues
+Found a bug? Make an [issue](https://github.com/xJustJqy/Rankup-MineWarps/issues/new)!
