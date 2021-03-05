@@ -1,5 +1,4 @@
-# Rankup-MineWarps
-[![](https://poggit.pmmp.io/shield.state/Rankup-MineWarps)](https://poggit.pmmp.io/p/Rankup-MineWarps)
+# Rankup-MineWarps [![](https://poggit.pmmp.io/shield.state/Rankup-MineWarps)](https://poggit.pmmp.io/p/Rankup-MineWarps)
 
 Rankup-MineWarps is a simple prisons plugins that allows staff to easily manage rankups and minewarps.
 
