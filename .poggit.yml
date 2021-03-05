@@ -5,4 +5,5 @@ branches:
 projects:
   Rankup-MineWarps:
     path: ""
+    icon: "rankup-minewarp.png"
 ...
